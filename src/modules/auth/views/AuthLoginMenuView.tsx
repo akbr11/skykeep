@@ -17,15 +17,17 @@ export default function AuthLoginMenuView() {
     username: string;
     password: string;
   }) => {
+    const hide = message.loading("Logging In...", 0);
     try {
       const data = await mutateAsync(values);
       login(data);
+      hide();
       message.success("Successfully Login!");
       router.push("/dashboard");
     } catch (err) {
+      hide();
       const error = err as AxiosError<{ message: string }>;
       console.error("Login error:", error);
-
       const errorMsg =
         error.response?.data?.message || "Invalid username or password";
       message.error(errorMsg);

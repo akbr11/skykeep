@@ -10,9 +10,9 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     <TanstackProvider>
       <AuthProvider>
         <AntdRegistry>
-          <div className="min-h-screen flex flex-col bg-gray-100">
-            <main className="flex-1 p-6">{children}</main>
-          </div>
+          <main className="min-h-screen flex flex-col bg-gray-100">
+            {children}
+          </main>
         </AntdRegistry>
       </AuthProvider>
     </TanstackProvider>
